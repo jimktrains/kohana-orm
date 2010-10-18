@@ -1306,7 +1306,7 @@ class Kohana_ORM {
 	 *
 	 * @return  bool
 	 */
-	protected function empty_pk()
+	public function empty_pk()
 	{
 		return (empty($this->_object[$this->_primary_key]) AND $this->_object[$this->_primary_key] !== '0');
 	}
