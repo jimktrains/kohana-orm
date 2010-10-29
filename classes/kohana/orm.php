@@ -853,6 +853,15 @@ class Kohana_ORM {
 				$data[$column] = $this->_object[$column] = ($format === TRUE) ? time() : date($format);
 			}
 
+			if (is_array($this->_updated_column))
+			{
+				// Fill the updated column
+				$column = $this->_updated_column['column'];
+				$format = $this->_updated_column['format'];
+
+				$data[$column] = $this->_object[$column] = ($format === TRUE) ? time() : date($format);
+			}
+
 			$result = DB::insert($this->_table_name)
 				->columns(array_keys($data))
 				->values(array_values($data))
