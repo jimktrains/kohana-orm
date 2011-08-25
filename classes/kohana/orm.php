@@ -1266,6 +1266,15 @@ class Kohana_ORM extends Model implements serializable {
 			$data[$column] = $this->_object[$column];
 		}
 
+		if (is_array($this->_updated_column))
+		{
+			// Fill the updated column
+			$column = $this->_updated_column['column'];
+			$format = $this->_updated_column['format'];
+
+			$data[$column] = $this->_object[$column] = ($format === TRUE) ? time() : date($format);
+		}
+
 		if (is_array($this->_created_column))
 		{
 			// Fill the created column
